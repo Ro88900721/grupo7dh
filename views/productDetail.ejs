@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Festive&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/129dcb97cd.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" link href="../css/header-footer.css">
+    <link rel="stylesheet" type="text/css" link href="../css/productDetail.css">
+    <title>
+        <%= title %> - <%= libros[id].titulo %>
+    </title>
+</head>
+
+<body>
+    <%- include('./partials/header') %> 
+    <main>
+        <div class="contDetail">
+            <div class="contenedor-titulo">
+                <h2 class="titulo">
+                    <%= libros[id].titulo %>
+                </h2>
+            </div>
+            <div class="productDetailImg">
+                <img src="/images/portadas/<%= libros[id].img %>" alt="">
+            </div>
+
+            <div class="description">
+                <div class="descriptionAutor">
+                    <p>Autor:</p>
+                    <a href="" class="autor">
+                        <%= libros[id].autor %>
+                    </a>
+                </div>
+                <div class="descriptionEditorial">
+                    <p>Editorial: </p>
+                    <a href="#" class="editorial">
+                        <%= libros[id].editorial %>
+                    </a>
+                </div>
+                <p class="precio">
+                    $ <%= libros[id].precio %>
+                </p>
+            </div>
+
+            <div class="productDetailPurchase">
+                <a href="/product/carrito/<%= libros[id].id %> ">
+                    <div class="btnComprar">
+                        <p>Comprar ahora</p>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="btnAgregar">
+                        <p>Agregar al Carrito</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="detalles">
+            <h2>Sinopsis del libro <a>
+                    <%= libros[id].titulo %>
+                </a></h2>
+            <p>
+                <%= libros[id].sinopsis %>
+            </p>
+            <h2>Detalles de <a>
+                    <%= libros[id].titulo %>
+                </a></h2>
+            <p>Número de páginas: <%= libros[id].paginas %><br>
+                    Peso: 340<br>
+                    Formato: Rústica<br>
+                    Edición: 2018<br>
+                    Idioma: Castellano<br>
+                    ISBN: 9789874132017
+            </p>
+        </div>
+    </main>
+    <%- include('./partials/footer')  %> 
+</body>
+</html>
