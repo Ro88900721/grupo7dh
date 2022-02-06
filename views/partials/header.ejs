@@ -4,10 +4,11 @@
             <a href= "/"><img src="/images/sombrero-loco-con-nombre.png" alt="Logo" class="logotipo"></a>
             <a href= "/"><img src="/images/sombrero-loco.png" alt="Logo" class="logotipo-solo"></a>
         </div>
-        <form action="/buscar" method="get" class="contenedor-buscador">
+        <form action="/libroList/buscar" method="GET" class="contenedor-buscador">
             <label for="search-bar">
-                <input class=cen type="text" id="search-bar" placeholder="Buscar libro, editorial, autor...">
+                <input class=cen type="text" name="libro" placeholder="Buscar libro, editorial, autor...">
                 <button><i class="fas fa-search"></i></button>
+             
             </label>
         </form>
 <!-- BURGERMENU CHECKBOX-->
@@ -16,91 +17,147 @@
         <input type="checkbox" name="list" id="btn-menu">
         <label class="burger-button" for="btn-menu">
             <i class="fas fa-bars"></i>
-        </label> 
-        <nav class="navbar">
-            <ul class="botones">
-                <li>
-                    <input type="checkbox" name="list">
-                    <label for="nivel2-1">
-                        <a href="/register"><i class="fas fa-user-plus"></i>Registrarse</a>
-                    </label>
-                </li>
-                <li>
-                    <input type="checkbox" name="list">
-                    <label for="nivel2-1">
-                        <a href="/login"><i class="fas fa-user"></i>Iniciar sesión</a>
-                    </label>
-                </li>
-                <li>
-                    <input type="checkbox" name="list">
-                    <label for="nivel2-1">
-                        <a href="/carrito"><i class="fas fa-shopping-cart"></i>Carrito</a>
-                    </label>
-                </li>
-                <li>
-                    <input type="checkbox" name="list" id="nivel2-1">
-                    <label for="nivel2-1" class="btn-categoria">
-                       <p><i class="fas fa-book-reader"></i>Categorias</p>
-                    </label>
-                    <ul class="interior">
-                        <li>
-                            <a href="/products/categoria/juveniles">Juveniles</a>
+        </label>
+        <% if(locals.isLogged){ %>
+            <nav class="navbar">
+                <ul class="botones">
+                    <li><a href="/user/profile/<%=locals.usuarioLogeado.usuario_id%>"><i class="fas fa-house-user"></i><%= locals.usuarioLogeado.usuario_nombre%></a></li>
+                    <li>
+                        <input type="checkbox" name="list">
+                        <label for="nivel2-1">
+                            <a href="/carrito"><i class="fas fa-shopping-cart"></i>Carrito</a>
+                        </label>
+                    </li>
+                    <li>
+                        <input type="checkbox" name="list" id="nivel2-1">
+                        <label for="nivel2-1" class="btn-categoria">
+                           <p><i class="fas fa-book-reader"></i>Categorias</p>
+                        </label>
+                        <ul class="interior">
+                            <li>
+                                <a href="/products/genero/1">Policiales</a>
+                            </li>
+                            <li>
+                                <a href="/products/genero/2">Juveniles</a>
+                            </li>
+                            <li>
+                                <a href="/products/genero/3">Humor</a>
+                            </li>
+                            <li>
+                                <a href="/products/genero/4">Novelas</a>
+                            </li>
+                            <li>
+                                <a href="/products/genero/5">Infantiles</a>
+                            </li>
+                        </ul>
+                    </li>   
+                    <li>
+                        <input type="checkbox" name="list"><label for="nivel2-1"><a href='/aboutUs'><i class="fas fa-users"></i>Sobre nosotros</a>
+                    </li>
+                    <li>
+                        <input type="checkbox" name="list"><label for="nivel2-1"><a href='/questions'><i class="fas fa-question-circle"></i>Preguntas frecuentes</a>
+                    </li>
+                    <% if(locals.usuarioLogeado && locals.usuarioLogeado.usuario_rol_id === 1){ %>
+                        <li> 
+                            <a href="/admin/create"><i class="fas fa-plus-circle"></i>Crear producto</a>
                         </li>
-                        <li>
-                            <a href="/products/categoria/infantil">Infantil</a>
-                        </li>
-                        <li>
-                            <a href="/products/categoria/novelas">Novelas</a>
-                        </li>
-                        <li>
-                            <a href="/products/categoria/ensayos">Ensayos</a>
-                        </li>
-                        <li>
-                            <a href="/products/categoria/policiales">Policiales</a>
-                        </li>
-                        <li>
-                            <a href="/products/categoria/teatro">Teatro</a>
-                        </li>
-                    </ul>
-                </li>
-                
-    </li>
-    <li><input type="checkbox" name="list"><label for="nivel2-1"><a href='/aboutUs'><i class="fas fa-users"></i>Sobre nosotros</a></li></label>
-    <li><input type="checkbox" name="list"><label for="nivel2-1"><a href='/questions'><i class="fas fa-question-circle"></i>Preguntas frecuentes</a></li></label>
-       </ul>
-    </li>
-    
-    
- </ul>
- </nav>
+                    <% } %> 
+                    <li>
+                        <a href="/user/logout"><i class="fas fa-sign-out-alt"></i>Logout</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+        <% } else {%>
+            <nav class="navbar">
+                <ul class="botones">
+                    <li>
+                        <input type="checkbox" name="list">
+                        <label for="nivel2-1">
+                            <a href="/user/register"><i class="fas fa-user-plus"></i>Registrarse</a>
+                        </label>
+                    </li>
+                    <li>
+                        <input type="checkbox" name="list">
+                        <label for="nivel2-1">
+                            <a href="/user/login"><i class="fas fa-user"></i>Iniciar sesión</a>
+                        </label>
+                    </li>
+                    <li>
+                        <input type="checkbox" name="list">
+                        <label for="nivel2-1">
+                            <a href="/carrito"><i class="fas fa-shopping-cart"></i>Carrito</a>
+                        </label>
+                    </li>
+                    <li>
+                        <input type="checkbox" name="list" id="nivel2-1">
+                        <label for="nivel2-1" class="btn-categoria">
+                           <p><i class="fas fa-book-reader"></i>Categorias</p>
+                        </label>
+                        <ul class="interior">
+                            <li>
+                                <a href="/products/genero/1">Policiales</a>
+                            </li>
+                            <li>
+                                <a href="/products/genero/2">Juveniles</a>
+                            </li>
+                            <li>
+                                <a href="/products/genero/3">Humor</a>
+                            </li>
+                            <li>
+                                <a href="/products/genero/4">Novelas</a>
+                            </li>
+                            <li>
+                                <a href="/products/genero/5">Infantiles</a>
+                            </li>
+                        </ul>
+                    </li>   
+                    <li>
+                        <input type="checkbox" name="list"><label for="nivel2-1"><a href='/aboutUs'><i class="fas fa-users"></i>Sobre nosotros</a>
+                    </li>
+                    <li>
+                        <input type="checkbox" name="list"><label for="nivel2-1"><a href='/questions'><i class="fas fa-question-circle"></i>Preguntas frecuentes</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </nav>            
+        <% } %> 
         
         <div class="botones-barra-superior">
-            <li><a href="/register"><i class="fas fa-user-plus"></i>Registrarse</a></li>
-            <li><a href="/login"><i class="fas fa-user"></i>Iniciar sesión</a></li>
-            <li><a href="/carrito"><i class="fas fa-shopping-cart"></i>Carrito</a></li>
+            <% if(locals.isLogged){ %>
+                <li><a href="/carrito"><i class="fas fa-shopping-cart"></i>Carrito</a></li>
+                <li><a href="/user/profile/<%=locals.usuarioLogeado.usuario_id%>"><i class="fas fa-house-user"></i><%= locals.usuarioLogeado.usuario_nombre%></a></li>
+                <li><a href="/user/logout"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+            <% } else {%>
+                <li><a href="/user/register"><i class="fas fa-user-plus"></i>Register</a></li>
+                <li><a href="/user/login"><i class="fas fa-user"></i>Login</a></li>
+                <li><a href="/carrito"><i class="fas fa-shopping-cart"></i>Carrito</a></li>
+            <% } %>
+                        
         </div>
         <div>
+
+               
         <nav class="navbar-desktop">
             <ul class="navh">
                 <li><a href="/products"><i class="fas fa-book-reader"></i>Categorias</a>
                     <ul>
                         <li>
-                            <a href="/products/categoria/juveniles">Juveniles</a>
+                            <a href="/products/genero/1">Policiales</a>
                         </li>
                         <li>
-                            <a href="/products/categoria/infantil">Infantil</a>
-                        </li> 
-                        <li>
-                            <a href="/products/categoria/novelas">Novelas</a>
+                            <a href="/products/genero/2">Juveniles</a>
                         </li>
                         <li>
-                            <a href="/products/categoria/ensayos">Ensayos</a>
+                            <a href="/products/genero/3">Humor</a>
                         </li>
                         <li>
-                            <a href="/products/categoria/policiales">Policiales</a>
+                            <a href="/products/genero/4">Novelas</a>
                         </li>
                         <li>
-                            <a href="/products/categoria/teatro">Teatro</a>
+                            <a href="/products/genero/5">Infantiles</a>
                         </li>
                     </ul>
                 </li>
@@ -110,6 +167,11 @@
                 <li>
                     <a href="/questions"><i class="fas fa-question-circle"></i>Preguntas frecuentes</a>
                 </li>
+                <% if(locals.usuarioLogeado && locals.usuarioLogeado.usuario_rol_id === 1){ %>
+                    <li> 
+                        <a href="/admin/create"><i class="fas fa-plus-circle"></i>Crear producto</a>
+                    </li>
+                <% } %> 
             </ul>
         </nav>
     </div>

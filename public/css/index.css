@@ -7,6 +7,7 @@ body{
     background-color: #ededed;
     font-family: 'roboto';
     min-width: 320px;
+    overflow-x: hidden;
 }
 
 /**** MOBILE ****/
@@ -26,17 +27,6 @@ body{
 /*-------main-----*/
 main{
     width: 100%;
-}
-
-.banner{
-    display: flex;
-    justify-content: center;
-}
-
-.banner-img{
-    width: 90vw;
-    min-height: 120px;
-    margin-top: 30px;
 }
 
 h2{
@@ -120,7 +110,7 @@ h3{
     }
 
     .banner-img{
-        width: 80vw;
+        width: 100%;
     }
 
     .productos{

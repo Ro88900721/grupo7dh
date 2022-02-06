@@ -1,30 +1,67 @@
-const fs = require('fs');
-let biblioteca = fs.readFileSync('./data/libros.json', 'utf-8');
-let libros = JSON.parse(biblioteca);
+const db = require('../database/models');
+const sequelize = db.sequelize;
+const { Op } = require('sequelize');
 
-function actualizar(){
-    biblioteca = fs.readFileSync('./data/libros.json', 'utf-8');
-    libros = JSON.parse(biblioteca);
-}
+// const fs = require('fs');
+// let biblioteca = fs.readFileSync('./data/libros.json', 'utf-8');
+// let libros = JSON.parse(biblioteca);
+
+// // function actualizar(){
+// //     biblioteca = fs.readFileSync('./data/libros.json', 'utf-8');
+// //     libros = JSON.parse(biblioteca);
+// }
 
 const productsController = {
+	buscar: async function (req, res, next) {
+		//let librosx = await db.Libro.findAll() variable para agregar mas productos librosx foreach
+		let libroSearch = req.query.libro;
+		const libros = await db.Libro.findAll({
+
+			where: {
+				libro_titulo: { [Op.like]: '%' + libroSearch + '%' }
+			}
+		})
+		let a = 0;
+		libros.forEach(libro => {
+			a = libros.length
+		})
+		console.log(a)
+		return res.render("libroList", { libros: libros, a/*librosx:librosx */ });
+
+
+	},
 	//index product
-	index: (req, res) => {
-		res.render('products', {libros : libros})
+	index: async (req, res) => {
+		const libros = await db.Libro.findAll()
+			.then(function(libros){
+				res.render('products', {libros : libros} )
+		})
 	},
-
-	//Categorias ----> género
-	categorias: (req, res) => {
-		const genero = req.params.genero
-		res.render('productsCategory', { libros : libros , genero : genero } )
-	},
-
+	
     //Detalle de un producto
-    detail: (req, res) => {
-		actualizar();
-        const id = req.params.id - 1;
-        res.render('productDetail', { libros, title: 'Detalle de Producto', id})
-    },
+    detail: async (req, res) => {
+		// actualizar();
+		// res.render('productDetail', { libros, title: 'Detalle de Producto', id})
+		const id = req.params.id;
+		const libros = await db.Libro.findByPk(id)
+		.then(function(libro){
+			res.render('productDetail', {libro : libro} ) })        
+			.catch(error => console.log(error))
+		console.log(libros)
+	},
+		
+	//Categorias ----> género
+	generos: async (req, res) => {
+		const idGenero = req.params.idGenero;
+		// const generos = await db.Genero.findAll()
+		// 	.then(function(genero){
+		// 		res.send ({genero})
+		// 	});
+		const libros = await db.Libro.findAll({where: {libro_genero_id : idGenero} })
+			.then(function(libros){
+			res.render('productsCategory', {libros : libros , idGenero : idGenero} ) })
+				.catch(error => console.log(error))
+	},
 
     //Product detail ---> Comprar ahora
     comprar: (req, res) => {

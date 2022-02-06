@@ -1,5 +1,6 @@
 const createError = require('http-errors');
 const express = require('express');
+const session = require('express-session');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
@@ -8,15 +9,23 @@ const methodOverride = require('method-override')
 
 //Declarando rutas
 const indexRouter = require('./routes/indexRoute');
-const loginRouter = require('./routes/loginRoute')
-const registerRouter = require('./routes/registerRoute')
+
+///-----Rutas de APIS-------////
+const userAPIRouter = require('./routes/api/userAPIRouter');
+const productsAPIRouter = require('./routes/api/productsAPIRouter');
+
+///-----Rutas de usuario-------////
+const userRouter = require('./routes/usersRoute')
 const productRouter = require('./routes/productRoute');
+const libroListRouter = require('./routes/libroListRoute')
 const carritoRouter = require('./routes/carritoRoute');
+const pedidosRouter = require('./routes/pedidosRoute');
+const detallesdepedidosRouter = require('./routes/detallespedidosRoute');
 const aboutUsRouter = require('./routes/aboutUsRoute');
 const questionsRouter = require('./routes/questionsRoute');
-
-//const usersRouter = require('./routes/users');
 const adminRouter = require('./routes/adminRoute');
+const apiRouter = require('./routes/api');
+
 
 const app = express();
 
@@ -29,19 +38,33 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(methodOverride('_method'))
+app.use(methodOverride('_method'));
+app.use(session({ secret: "Somos el sombrero loco",
+                  resave: false,
+                  saveUninitialized: false}))
+                  
+///-----Requiriendo middleware de usuario logeado----///
+const userLoggedMiddlewares = require('./middlewares/userLoggedMiddlewares')
+//Uso de middlewares
+app.use(userLoggedMiddlewares);
 
 //Uso de rutas
 app.use('/', indexRouter);
-app.use('/login', loginRouter);
-app.use('/register', registerRouter);
+app.use('/user', userRouter)
 app.use('/products', productRouter);
+app.use('/libroList', libroListRouter);
 app.use('/carrito', carritoRouter);
+app.use('/pedidos', pedidosRouter);
+app.use('/detallesdepedidos', detallesdepedidosRouter);
 app.use('/aboutUs', aboutUsRouter);
 app.use('/questions', questionsRouter);
-
-//app.use('/users', usersRouter);
 app.use('/admin', adminRouter);
+
+
+//Uso de rutas APIS
+app.use('/api/users', userAPIRouter)
+app.use('/api/products', productsAPIRouter)
+app.use('/api', apiRouter);
 
 
 // catch 404 and forward to error handler

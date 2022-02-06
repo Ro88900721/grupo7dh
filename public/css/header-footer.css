@@ -51,7 +51,7 @@ header .contenedor-logo .logotipo {
     background-color: rgba(0,0,0,0.3);
 }
 
-/*----------menu celu desplegable*/
+/*----------menu mobile desplegable*/
 
 #menu * { list-style:none;}
 #menu li{ line-height:180%;}
@@ -185,63 +185,156 @@ header .navbar ul.botones li a i{
 
 
 /*FOOTER*/
-footer{
-    display: flex;
-    flex-direction: column;
+.contenedor-footer{
     background-color: #7c0856;
-    padding: 15px 0px 5px;
-    ;
 }
 
-footer article{
-    text-align: center;
-    width: 90%;
-    padding-bottom: 7px;
+footer{
+    max-width: 1184px;
+    background: none;
     margin: auto;
 }
 
-article i{
-    color: rgb(225 223 225);
-    font-size: 17px;
+
+.footer-seccion-1{
+    display: flex;
+    justify-content: space-evenly;
+    height: 100px;
+    padding-top: 15px;
 }
 
-article.copyright{
-    margin-top: 5px;
-    padding-bottom: 5px;
+.contenedor-logo-footer{
+    height: 60;
+    margin-top: 2.5px;
+    position: relative;
+}
+
+.contenedor-logo-footer img{
+    height: 70px;
+}
+
+.contactanos{
+    display: flex;
+    flex-direction: column;
     text-align: center;
-    color: rgb(225 223 225);
-    border-top: 1px solid #bb3c91;
 }
 
-.textos-footer {
-    color: rgb(225 223 225);
-    font-size: 15px;
+.contactanos div{
+    display: flex;
+    color: #ffff;
+    margin: 1.5px 0;
+}
+
+.contactanos h4{
+    color: #ffff;
+    text-align: center;
+    margin-bottom: 2.5px;
+    text-decoration: underline;
+}
+
+.contactanos div i{
+    margin-right: 3px;
+}
+
+.contactanos div p{
+    font-size: 14px;
+}
+
+.linea-footer{
+    border-top: 1px solid white;
+    width: 90%;
+    margin: 10px auto;
+}
+
+.footer-seccion-2{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 7px 0px;
+}
+
+.footer-seccion-2 div{
+    width: 45vw;
+    color: #ffff;
+    margin: 2.5px 0;
+    text-align: center;
+}
+
+.footer-seccion-2 div a{
+    color: #ffff;
+    text-decoration: none;
+    margin-left: 3px;
+    font-size: 13px;
+}
+
+.footer-seccion-2 div a i{
+    margin-right: 2.5px;
+}
+
+.footer-seccion-3{
+    display: flex;
+}
+
+
+.footer-seccion-3 div{
+    display: none;
+}
+
+footer article div{
+    inline-size: fit-content;
+    margin: auto;
+}
+
+.redes-footer{
+    display: flex;
+    color: #ffff;
+    margin: 5px 1.5px 2.5px;
+    text-align: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.redes-footer a{
+    color: #ffff;
+}
+
+.redes-footer a i{
+    font-size: 20px;
+    margin: 0 2.5px 3px;
 }
 
 .copyright{
-    border-top: 1px solid black;
-    margin: 2px;
     text-align: center;
-    color: rgb(225 223 225);
+    font-size: 13px;
+    border-top: 1px solid black;
+    margin-top: 15px;
 }
 
-/*footer article {
-    margin: 40px 0;
-    color: rgb(187, 147, 182);
+/*-----------------MEDIA QUERIES: 450W ------------*/
+@media (min-width: 450px){
+    .contactanos h4{
+        font-size: 18px;
+    }
+
+    .contactanos div p{
+        font-size: 20px;
+    }
+
+    .footer-seccion-2 div a {
+        font-size: 17px;
+    }
+
+    .redes-footer a i{
+        font-size: 25px;
+    }
 }
-
-footer article div {
-    margin-bottom: 9px;
-}
-*/
-
-
 /*-----------------MEDIA QUERIES: TABLET ------------*/
-
-@media (min-width: 768px){
+@media (min-width: 700px){
 .contenedor-header{
     justify-content: space-around;
 }
+
 
 div.contenedor-logo{
     margin-left: 20px;
@@ -263,24 +356,88 @@ label.burger-button i{
 }
 
 
+footer{
+    flex-wrap: wrap;
+    flex-direction: row;
+    padding-top: 15px;
+    place-items: center;
+    justify-content: center;
+}
 
-    footer{
-        flex-wrap: wrap;
-        flex-direction: row;
-    }
+.contenedor-logo-footer {
+    display: none;
+}
 
-    footer article{
-        width: 32%;
-    }
+.footer-seccion-3{
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
 
-    footer article.copyright{
-        width: 100%;
-    }
+
+.footer-seccion-3 div{
+    display: block;
+    text-align: center;
+    width: 45vw;
+    border-radius: 15px;
+    border: 1px dashed white;
+    padding: 10px;
+}
+
+.footer-seccion-3 div i{
+    color: white;
+    font-size: 20px;
+    text-decoration: underline;
+    padding-bottom: 5px;
+}
+
+.footer-seccion-3 div p{
+    color: white;
+    font-size: 14px;
+}
+
+article div{
+    border: none;
+}
+
+footer .copyright{
+    width: 100%;
+    border-top: 0px ;
+}
+footer {
+    display: flex;
+}
+
+footer article{
+    order: -1;
+    width: 42%;
+    text-align: -webkit-right;
+}
+
+footer article div{
+    margin: 0px;
+}
+footer .footer-seccion-1{
+    order: -2;
+    width: 45%;
+    margin:0px;
+    padding-top: 0px;
+    justify-content: space-between;
+}
+
+footer .footer-seccion-1 h4{
+    margin-bottom: 15px;
+}
 }
 
 /*-----------------MEDIA QUERIES: DESKTOP ------------*/
 
 @media (min-width: 1024px){
+    .contactanos h4 {
+        font-size: 30px;
+    }
+    
     header .navbar{
         display: none;
     }
@@ -291,13 +448,12 @@ label.burger-button i{
    
 
     .botones-barra-superior{
-        width: 35%;
-        margin-right: -20px;
+        margin-right: -50px;
         display: flex;
     }
 
     .botones-barra-superior li{
-        margin-right: 30px;
+        margin-right: 25px;
         list-style: none;
     }
     
@@ -354,7 +510,6 @@ ul, ol {
 }
 
 .navh li a {
-    
     text-decoration:none;
     padding:5px 6px;
     display:block;
@@ -366,12 +521,14 @@ ul, ol {
 }
 
 .navh li ul {
-    display:none;
-    position:absolute;
-    min-width:100px;
+    display: none;
+    position: absolute;
+    min-width: 200px;
     color: blueviolet;
+    text-align: center;
     z-index: 100;
     padding-top: 6px;
+    left: 10px;
 }
 
 .navh li:hover > ul {
@@ -418,7 +575,7 @@ ul, ol {
 
     .contenedor-buscador{
         width: 35%;
-        margin-left: 30px;
+        margin: auto;
     }
 
     .contenedor-buscador label button:hover {
@@ -430,16 +587,25 @@ ul, ol {
     }
     
     footer article i h6.textos-footer{
-        font-size: 22px;
+        font-size: 15px;
     }
 
     .textos-footer{
-        font-size: 20px;
+        font-size: 15px;
     }
 
     footer article.copyright p.textos{
-        font-size: 22px;
+        font-size: 15px;
     }
     
 }
+
+
+/*----------------------MEDIAQUERIES 1200 PX------------------*/
+@media (min-width: 1100px) {
+.navh li ul {
+    left: 70px;
+}
+}
+
 
