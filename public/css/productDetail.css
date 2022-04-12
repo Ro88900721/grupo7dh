@@ -1,0 +1,322 @@
+/*-------main-----*/
+
+body{
+    min-width: 320px;
+}
+
+main{
+    padding: 25px 5% 50px 5%;
+    font-family: 'roboto';
+}
+
+h2 {
+    font-size: 20px;
+}
+
+.description {
+    position: relative;
+}
+
+.productDetailImg {
+    width: 100%;
+}
+
+.productDetailImg img {
+    width: 100%;
+}
+
+.description .descriptionAutor {
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+}
+
+.description .descriptionEditorial {
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 50%;
+}
+
+.description .descriptionAutor .autor {
+    padding-left: 5px;
+    color: #7d11ca;
+    font-weight: bolder;
+    text-decoration: none;
+}
+
+.description .descriptionEditorial .editorial {
+    padding-left: 5px;
+    color: black;
+    font-weight: bolder;
+    text-decoration: none;
+}
+
+.description .precio {
+    color: rgb(3, 161, 3);
+    font-weight: bold;
+    font-size: 2em;
+    margin-top: 20px;
+}
+
+.productDetailPurchase a {
+    text-decoration: none;
+}
+
+.productDetailPurchase .btnComprar {
+    width: 100%;
+    background-color: #6e066e;
+    margin: 15px auto;
+    font-size: 1.5em;
+    height: 2em;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.btnComprar p{
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+}
+
+.productDetailPurchase .btnAgregar {
+    width: 100%;
+    background-color: #9B9DCC;
+    margin: 15px auto;
+    font-size: 1.5em;
+    height: 2em;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.btnAgregar p{
+    width: 100%;
+    text-align: center;
+    color: #000;
+    font-weight: bold;
+}
+
+.detalles h2 {
+    margin-top: 40px;
+    margin-bottom: 15px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid gray;
+}
+
+.detalles h2 a {
+    color : #7c0856;
+}
+
+footer{
+    bottom: 0px;
+}
+
+
+
+/*------------------MEDIA QUERIES: TABLET -----------------*/
+@media screen and (min-width:726px){
+    
+    /*------MAIN------*/
+
+    main {
+        padding-top: 50px;
+    }   
+
+    h2 {
+        font-size: xx-large;
+    }
+
+    .contDetail {
+        margin-top: 20px;
+        margin-bottom: 100px;
+        display: flex;
+        position: relative;
+        flex-direction: row;
+        flex-wrap: wrap;
+        min-height: 450px;
+    }
+
+    .contDetail .contenedor-titulo {
+        width: 60%;
+        padding-left: 5%;
+        padding-right: 5%;
+        order: 1;
+        height: fit-content;
+        position: absolute;
+        right: 0px;
+    }
+
+    .contDetail  .contenedor-titulo .titulo {
+        position: relative;
+        border-bottom: 1px solid gray;
+        order: +1;
+    }
+
+    .productDetailImg{
+        width: 40%;
+        order: 0;
+    }
+
+    .productDetailPurchase {
+        width: 60%;
+        margin-right: 5%;
+        margin: auto;
+    }
+
+    .description {
+        width: 60%;
+        padding-left: 5%;
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-self: center;
+    }
+
+    .description .descriptionAutor {
+        width: 100%;
+        height: fit-content;
+    }
+
+    .description .descriptionEditorial {
+        width: 100%;
+        position: relative;
+        height: fit-content;
+        margin-top: 15px;
+    }
+
+    .description p{
+        font-size: 24px;
+
+    }
+
+    .description a{
+        font-size: 24px;
+    }
+    
+    .description .precio {
+        margin-top: 20px;
+        margin-bottom: 30px;
+        font-size: 32px;
+        height: fit-content;
+    }
+    
+}
+
+/*------------------MEDIA QUERIES: LAPTOP -----------------*/
+@media screen and (min-width:1024px){
+    body {
+        background-color: #ededed;
+    }
+
+    main {
+        width:70%;
+        max-width: 1184px;
+        min-width: 1024px;
+        margin: 30px auto 50px;
+        padding-top: 50px;
+        background-color: white;
+        border-radius: 10px;
+        border-left: 1px solid lightgrey;
+        border-right: 1px solid lightgrey;
+    }
+
+    main h2{
+        font-size: 32px;
+    }
+
+    .contDetail {
+        justify-content: space-between;
+        flex-direction: row;
+    }
+
+    .description {
+        width: 60%;
+    }
+
+    .description p {
+        font-size: 20px;
+    }
+
+    .description a {
+        font-size: 20px;
+        position: relative; 
+    }
+
+    .description a:before {
+        content:"";
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.3);
+        display: none;;
+    }
+
+    .description a:hover:before {
+        display: block;
+    }
+
+    .productDetailImg {
+        width: 35%;
+    }
+
+
+    .detalles p {
+        font-size: 20px;
+        padding: 0px 2% 0px 2%;
+    }
+
+    .productDetailPurchase .btnAgregar{
+        position: relative;  
+    }
+
+    .productDetailPurchase .btnAgregar:before {
+        content:"";
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.1);
+        display: none;
+        transition: all 1s ease;
+    }
+
+    .productDetailPurchase .btnAgregar:hover:before {
+        display: block;
+    }
+
+    .productDetailPurchase .btnComprar:before {
+        content:"";
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.1);
+        display: none;
+    }
+
+    .productDetailPurchase .btnComprar:hover:before {
+        display: block;
+    }
+}
+
+
+
+ /* --- Nueva fuente especial --- */
+/* 
+ @font-face {
+    font-family:'mifuente';
+    src:url(../fairytale.ttf)}
+/*
+    
+    

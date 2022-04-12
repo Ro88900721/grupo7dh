@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <link href="https://fonts.googleapis.com/css2?family=Festive&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/129dcb97cd.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="images/sombrero-loco.100px.ico">
+    <link rel="stylesheet" type="text/css" link href="../../css/admin.css">
+    <link rel="stylesheet" type="text/css" link href="../../css/header-footer.css">   
+    <title>El sombrerero Loco - Agregar autor</title>
+</head>
+<body>
+    <%- include('./partials/header')  %>
+
+    <main>
+        <h2 class="title-form-admin">Formulario de incorporación de autores</h2>		
+
+        <div class="container-form-admin">	
+            <form class="form-admin" action="/admin/addAuthor" method="post">
+
+	    	    <label for="autor_nombre" class="form-label">Nombre del autor:</label>
+		        <input type="text" id="autor_nombre" name="autor_nombre" class="form-input">				
+            <br>    
+            
+	    	    <label for="autor_biografia" class="form-label">Biografía del autor:</label>
+		        <textarea type="text" id="autor_biografia" name="autor_biografia" class="form-input"></textarea>
+            <br>
+                <input class="submit" type="submit">
+            </form>
+        </div>
+
+        <div class="form-admin">
+            <ol class="ol-autores">
+                <h3 class="autores-h3">Lista de autores en Base de Datos</h3>
+                <% autores.forEach(autor => { %>
+                <li class='autores-li'>
+                        <p>ID del autor:<b> <%= autor.autor_id %> </b> </p>
+                        <p>Nombre del autor:<b> <%= autor.autor_nombre %> </b> </p>
+                </li>
+                <% }); %>
+            </ol>
+        </div>
+    </main>
+
+    <%- include('./partials/footer')  %> 
+</body>
+</html>

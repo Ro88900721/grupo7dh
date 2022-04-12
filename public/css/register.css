@@ -1,0 +1,206 @@
+/*BIENVENID@s*/
+h2 {
+  color: #302c2a;
+  border-bottom: 5px solid #7c0856;
+  width: 5em;
+  font-size: 3em;
+  font-family: 'mifuente';
+  margin: 0px auto 40px;
+}
+
+h3{
+    font-size: 24px;
+}
+
+p{
+    font-size: 12px;
+}
+
+
+/* ------------ LOGIN ------------- */
+
+
+div.main-login {
+    width: 100%;
+    margin: 30px 36px;
+    padding: 90px 9px;
+    background-color: #ffffffd2;
+    box-shadow: 0px 0px 10px rgb(100 100 100);
+}
+
+
+.login-page {
+    width: 360px;
+    padding: 8% 0 0;
+    margin: auto;
+  }
+
+.form {
+    position: relative;
+    z-index: 1;
+    background: #FFFFFF;
+    max-width: 420px;
+    margin: 50px auto 100px;
+    padding: 25px 45px;
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  }
+
+  .mensaje-error{
+    color: red;
+  }
+
+  .form-control{
+      text-align: center;
+  }
+  .form input {
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    background: #f2f2f2;
+    width: 100%;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+    border-radius: 5px ;
+  }
+  .form button {
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: #6e066e;
+    width: 100%;
+    border: 0;
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 14px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+    border-radius: 15px;
+  }
+  .form button:hover,.form button:active,.form button:focus {
+    background: #600c68;
+  }
+  .form .message {
+    margin: 15px 0 0;
+    color: #b3b3b3;
+    font-size: 12px;
+  }
+  .form .message a {
+    color: #a42aa8;
+    text-decoration: none;
+  }
+  
+ .decoracion{
+    display:flex;
+    position:absolute;
+    left:30px;
+    bottom:20px;
+     width: 200px;
+          height: 200px;
+          animation-iteration-count: infinite;
+          animation-direction: alternate;
+          animation-name:achicando;
+          animation-duration:1500ms;
+   
+      }
+       
+      
+     
+@keyframes achicando {
+    0% {
+        background-color: none;
+    }
+    
+    100% {
+        background-color: none;
+        height: 100px;
+        width: 100px;
+        opacity: 0.5;
+    }
+}
+      
+
+/*________________________MEDIAS*/
+
+
+
+
+/*--------MEDIA QUERIES MOBILE-------*/
+
+/*--------MEDIA QUERIES TABLET-------*/
+@media (min-width: 361px) {
+
+   main .decoracion{
+    visibility: hidden ;
+   }
+}
+
+@media (min-width: 800px) {
+   main .decoracion{
+    visibility: hidden ;
+   }
+}
+
+
+
+
+@media (min-width: 1024px){
+    /*Header---*/
+    h2{
+      font-size: 60px;
+    }
+
+    main .decoracion{
+    visibility: visible;
+   }
+
+   .form {
+     max-width: 520px;
+}
+}
+
+@media (min-width: 1920px) {
+    /*Header*/
+    main .decoracion{
+        visibility: visible;
+       }
+    }
+
+
+
+/*-------------AJUSTE MEDIA QUERIES DE HEADER Y FOOTER----------*/
+main{
+  padding-top: 30px;
+}
+
+footer{
+  position: static;
+  margin-top: -50px;
+}
+
+@media (min-width:726px){
+main{
+  padding-top: 30px;
+}
+
+footer{
+  margin-top: 0px;
+}
+
+}
+
+
+
+/*----------------PROFILE-------------*/
+.title-profile{
+  text-align: center;
+  text-decoration: underline;
+  margin-bottom: 30px;
+};
+
+form p.profile-parraf{
+  color: red;
+}

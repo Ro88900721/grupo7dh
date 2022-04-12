@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <link href="https://fonts.googleapis.com/css2?family=Festive&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/129dcb97cd.js" crossorigin="anonymous"></script>
+   
+    <link rel="stylesheet" type="text/css" link href="../css/register.css"> 
+    <link rel="stylesheet" type="text/css" link href="../css/header-footer.css">
+    <link rel="icon" href="images/sombrero-loco.100px.ico">
+    <title>El sombrero Loco</title>
+</head>
+<body>
+    <%- include('./partials/header')  %> 
+    <main>
+        <h2 class=cen >¡Registrate!</h2>
+        <form class="form" method="post" action="/user/register">
+            <p class="mensaje-error" id="mensaje-error"></p>
+            <% if (locals.errores ){ 
+                    errores.forEach(error => {%>
+                        <p class="mensaje-error"> <%= error.msg%> </p>
+                <% }) %>
+            <% } %> 
+            <input type="text" class="form-control" placeholder="Nombre completo" name="nombre" value="<%= locals.old && old.nombre %>" />
+
+            <input type="text" class="form-control" placeholder="Apellido" name="apellido" value="<%= locals.old && old.apellido %>" />
+
+            <input type="email" class="form-control" placeholder="Email" name="email" value="<%= locals.old && old.email %>" required/>
+
+            <input type="password" class="form-control" placeholder="Contraseña" data-toggle="password" name="contraseña"  id="password" required/>
+
+            <input type="password" class="form-control" placeholder="Confirma contraseña" data-toggle="Confirma password" name="confirmaContraseña" id='confirmPassword' required/>
+            
+            <label for="acuerdo">Estoy de acuerdo con terminos y condiciones.</label>
+                <input type="checkbox" name="acuerdo" value="Acepta" required>
+                <button id='button-register'>Registrarse</button>
+            <p class="message">Ya estas registrado? <a href="/user/login">Iniciar Sesión</a></p>
+          </form>
+    </main>
+    <%- include('./partials/footer')  %>
+    <script src="/js/register.js"></script> 
+</body>
+</html>

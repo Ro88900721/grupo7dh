@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <link href="https://fonts.googleapis.com/css2?family=Festive&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/129dcb97cd.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" link href="../css/admin.css">
+    <link rel="stylesheet" type="text/css" link href="../css/header-footer.css">   
+	<link rel="icon" href="images/sombrero-loco.100px.ico">
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>El sombrerero Loco</title>
+</head>
+
+
+
+<body>
+    <%- include('./partials/header')  %>
+	
+	<main>
+		<h3 class=frase>“Creo que sí, estás demente. Pero te diré un secreto: las mejores personas lo están”. </h3>
+    
+		<h2 class="title-form-admin">Formulario de creación de productos</h2>
+			
+		<div class="container-form-admin">
+			<form action="/admin/create" method="POST" enctype="multipart/form-data" accept=".jpg, .png" class="form-admin" id="formadmin">	
+									
+						<label for="libro_titulo" class="form-label">Título:</label>
+						<input type="text" id="libro_titulo" name="libro_titulo" class="form-input">
+					
+						<label for="libro_autor" class="form-label">Número de autor:</label>
+						<input type="text" id="libro_autor" name="libro_autor" placeholder="N° de autor en base de datos" class="form-input">
+                  
+						<label for="libro_precio" class="form-label">Precio:</label>
+						<input type="number" id="libro_precio" name="libro_precio" class="form-control">
+					
+						<label for="libro_paginas" class="form-label">Páginas:</label>
+						<input type="number" id="libro_paginas" name="libro_paginas" class="form-control">
+					
+						<label for="libro_editorial" class="form-label">Editorial:</label>
+						<input type="text" id="libro_editorial" name="libro_editorial" class="form-control">
+                   
+						<label for="libro_generos" class="form-label">Género:</label>
+						<select class="form-control" id="libro_generos" name="libro_generos">
+							<option disabled selected > Seleccione Género</option>
+							<option value="1">Policiales</option>
+							<option value="2">Juveniles</option>
+							<option value="3">Humor</option>
+							<option value="4">Novelas</option>
+							<option value="5">Infantiles</option>
+						</select>
+					<br>
+					<br>
+						<label for="libro_sinopsis" class="form-label">Sinópsis:</label>
+						<textarea name="libro_sinopsis" id="libro_sinopsis" class="form-control"></textarea>
+					<br>
+					<br>
+						<label for="img" class="form-label">Imagen:</label>
+						<input type="file" accept=".jpg, .png" name="img" id="img" class="form-control">
+					<br>
+					<label for="libro_stock" class="form-label">Stock:</label>
+					<input type="number" id="libro_stock" name="libro_stock" class="form-control">
+					<br>
+					
+					<input class= submit type="submit" class="buy-now-button" id="agregar"></input>
+	
+			</form>
+		</div>
+	</main>
+
+	 <%- include('./partials/footer')  %> 
+	 <script src='/js/admin.js'></script>     
+	 <script src='/js/alertnewlibro.js'></script>  
+</body>
+</html>
